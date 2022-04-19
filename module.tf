@@ -47,14 +47,25 @@ module "caf" {
     storage_account_blobs = var.storage_account_blobs
     storage_containers    = var.storage_containers
   }
-
-
-  #security = {
-  #  dynamic_keyvault_secrets = var.dynamic_keyvault_secrets
-  #}
-  # Add object as described below
 }
 
+module "vmss_extension_custom_scriptextension" {
+  source     = "./modules/terraform-azurerm-caf/modules/compute/virtual_machine_scale_set_extensions"
+  depends_on = [module.caf]
+
+  for_each = {
+    for key, value in try(var.virtual_machine_scale_sets, {}) : key => value
+    if try(value.virtual_machine_scale_set_extensions.custom_script, null) != null
+  }
+
+  client_config                     = module.caf.client_config
+  virtual_machine_scale_set_id      = module.caf.virtual_machine_scale_sets[each.key].id
+  extension                         = each.value.virtual_machine_scale_set_extensions.custom_script
+  extension_name                    = "custom_script"
+  managed_identities                = tomap({ (var.landingzone.key) = module.caf.managed_identities })
+  storage_accounts                  = tomap({ (var.landingzone.key) = module.caf.storage_accounts })
+  virtual_machine_scale_set_os_type = module.caf.virtual_machine_scale_sets[each.key].os_type
+}
 
 module "dynamic_keyvault_secrets" {
   source = "./modules/terraform-azurerm-caf/modules/security/dynamic_keyvault_secrets"
@@ -72,12 +83,12 @@ module "dynamic_keyvault_secrets" {
   objects  = module.caf
 }
 
-
-locals {
-  vaults = tomap({ (var.landingzone.key) = module.caf.keyvaults })
-  #shirKey   = module.caf.data_factory_integration_runtime_self_hosted["dfirsh1"].auth_key_1
-  #pSettings = "powershell.exe -ExecutionPolicy Unrestricted -File installSHIRGateway.ps1 -gatewayKey ${shirKey}"
+resource "time_sleep" "delay" {
+  depends_on      = [module.dynamic_keyvault_secrets]
+  create_duration = "15s"
 }
+
+/*
 
 module "vmss_extension_custom_script_adf_shir" {
   source     = "./modules/terraform-azurerm-caf/modules/compute/virtual_machine_scale_set_extensions"
@@ -98,3 +109,8 @@ module "vmss_extension_custom_script_adf_shir" {
   keyvaults                         = tomap({ (var.landingzone.key) = module.caf.keyvaults })
   keyvault_id                       = local.vaults[var.landingzone.key]["kv1"].id
 }
+
+locals {
+  vaults = tomap({ (var.landingzone.key) = module.caf.keyvaults })
+}
+*/

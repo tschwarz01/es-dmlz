@@ -82,12 +82,13 @@ virtual_machine_scale_sets = {
           keyvault_key = "kv1"
         }
         # You can define fileuris directly or use fileuri_sa reference keys and lz_key:
-        #fileuris = ["https://raw.githubusercontent.com/Azure/data-landing-zone/main/code/installSHIRGateway.ps1"]
-        fileuris = ["https://xkkgstsa1.blob.core.windows.net/files/installSHIRGateway.ps1"]
+        fileuris = ["https://raw.githubusercontent.com/Azure/data-landing-zone/main/code/installSHIRGateway.ps1"]
+        #fileuris = ["https://xkkgstsa1.blob.core.windows.net/files/installSHIRGateway.ps1"]
         #fileuri_sa_key          = "sa1"
         #fileuri_sa_path         = "files/installSHIRGateway.ps1"
         base_command_to_execute = "powershell.exe -ExecutionPolicy Unrestricted -File installSHIRGateway.ps1 -gatewayKey"
-        identity_type           = "UserAssigned" # optional to use managed_identity for download from location specified in fileuri, UserAssigned or SystemAssigned.
+        #command_override = "powershell.exe -Command \"echo 'blllllahhhhhh > blah.txt';exit 0;\""
+        identity_type = "UserAssigned" # optional to use managed_identity for download from location specified in fileuri, UserAssigned or SystemAssigned.
         #lz_key                    = "examples"
         managed_identity_key      = "vmssadf"
         automatic_upgrade_enabled = false

@@ -7,3 +7,4 @@ providers_sensitive.tf
 terraform_sensitive.tf
 main.tfplan
 *.tfplan
+sensitive*
