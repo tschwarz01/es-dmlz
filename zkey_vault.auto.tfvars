@@ -12,19 +12,13 @@ keyvaults = {
         secret_permissions      = ["Set", "Get", "List", "Delete", "Purge", "Recover"]
       }
     }
-    /*
-    network = {
-      default_action = "Deny"
-      bypass         = "AzureServices"
-      ip_rules       = []
-      subnets = {
-        servicesSubnetName = {
-          vnet_key   = "vnet_region1"
-          subnet_key = "services"
-        }
+    diagnostic_profiles = {
+      central_logs_region1 = {
+        definition_key   = "azure_key_vault"
+        destination_type = "log_analytics"
+        destination_key  = "central_logs"
       }
     }
-    */
     private_endpoints = {
       vault = {
         name               = "vault"
@@ -59,6 +53,13 @@ keyvaults = {
           vnet_key   = "vnet_region1"
           subnet_key = "services"
         }
+      }
+    }
+    diagnostic_profiles = {
+      central_logs_region1 = {
+        definition_key   = "azure_key_vault"
+        destination_type = "log_analytics"
+        destination_key  = "central_logs"
       }
     }
     private_endpoints = {

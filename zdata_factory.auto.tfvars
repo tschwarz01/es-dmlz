@@ -46,5 +46,12 @@ data_factory = {
         }
       }
     }
+    diagnostic_profiles = {
+      central_logs_region1 = {
+        definition_key   = "azure_data_factory"
+        destination_type = "log_analytics"
+        destination_key  = "central_logs"
+      }
+    }
   }
 }

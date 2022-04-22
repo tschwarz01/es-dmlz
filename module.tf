@@ -41,7 +41,7 @@ module "caf" {
     data_factory_integration_runtime_self_hosted = var.data_factory_integration_runtime_self_hosted
   }
   purview = {
-    #purview_accounts = var.purview_accounts
+    purview_accounts = var.purview_accounts
   }
   storage = {
     storage_account_blobs = var.storage_account_blobs

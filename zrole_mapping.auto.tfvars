@@ -11,6 +11,16 @@ role_mapping = {
           }
         }
       }
+      kv2 = {
+        "Key Vault Secrets User" = {
+          logged_in = {
+            keys = ["user"]
+          }
+          purview_accounts = {
+            keys = ["pva1"]
+          }
+        }
+      }
     }
     storage_accounts = {
       sa1 = {

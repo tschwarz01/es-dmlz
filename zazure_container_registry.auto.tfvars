@@ -11,7 +11,6 @@ azure_container_registries = {
         destination_key  = "central_logs"
       }
     }
-
     private_endpoints = {
       acr = {
         name               = "acr001"

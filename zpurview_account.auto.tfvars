@@ -7,6 +7,13 @@ purview_accounts = {
     resource_group = {
       key = "governance"
     }
+    diagnostic_profiles = {
+      central_logs_region1 = {
+        definition_key   = "purview_account"
+        destination_type = "log_analytics"
+        destination_key  = "central_logs"
+      }
+    }
     private_endpoints = {
       account = {
         name               = "account"

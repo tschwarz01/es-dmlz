@@ -88,6 +88,19 @@ diagnostics_definition = {
     }
   }
 
+  load_balancer = {
+    name = "operational_logs_and_metrics"
+    categories = {
+      log = [
+        ["LoadBalancerAlertEvent", true, false, 7],
+        ["LoadBalancerProbeHealthStatus", true, false, 7],
+      ]
+      metric = [
+        ["AllMetrics", true, false, 7]
+      ]
+    }
+  }
+
   network_security_group = {
     name = "operational_logs_and_metrics"
     categories = {
@@ -113,6 +126,20 @@ diagnostics_definition = {
     }
   }
 
+  private_dns_zone = {
+    name = "operational_logs_and_metrics"
+    categories = {
+      # log = [
+      #   # ["Category name",  "Diagnostics Enabled(true/false)", "Retention Enabled(true/false)", Retention_period]
+      #   ["AuditEvent", true, false, 7],
+      # ]
+      metric = [
+        #["Category name",  "Diagnostics Enabled(true/false)", "Retention Enabled(true/false)", Retention_period]
+        ["AllMetrics", true, false, 7],
+      ]
+    }
+  }
+
   azure_container_registry = {
     name = "operational_logs_and_metrics"
     categories = {
@@ -120,6 +147,61 @@ diagnostics_definition = {
         # ["Category name",  "Diagnostics Enabled(true/false)", "Retention Enabled(true/false)", Retention_period]
         ["ContainerRegistryRepositoryEvents", true, false, 7],
         ["ContainerRegistryLoginEvents", true, false, 7],
+      ]
+      metric = [
+        #["Category name",  "Diagnostics Enabled(true/false)", "Retention Enabled(true/false)", Retention_period]
+        ["AllMetrics", true, false, 7],
+      ]
+    }
+  }
+
+  azure_key_vault = {
+    name = "operational_logs_and_metrics"
+    categories = {
+      log = [
+        # ["Category name",  "Diagnostics Enabled(true/false)", "Retention Enabled(true/false)", Retention_period]
+        ["AuditEvent", true, false, 7],
+        ["AzurePolicyEvaluationDetails", true, false, 7],
+      ]
+      metric = [
+        #["Category name",  "Diagnostics Enabled(true/false)", "Retention Enabled(true/false)", Retention_period]
+        ["AllMetrics", true, false, 7],
+      ]
+    }
+  }
+
+  azure_data_factory = {
+    name = "operational_logs_and_metrics"
+    categories = {
+      log = [
+        # ["Category name",  "Diagnostics Enabled(true/false)", "Retention Enabled(true/false)", Retention_period]
+        ["ActivityRuns", true, false, 7],
+        ["PipelineRuns", true, false, 7],
+        ["TriggerRuns", true, false, 7],
+        ["SandboxPipelineRuns", true, false, 7],
+        ["SandboxActivityRuns", true, false, 7],
+        ["SSISPackageEventMessages", true, false, 7],
+        ["SSISPackageExecutableStatistics", true, false, 7],
+        ["SSISPackageEventMessageContext", true, false, 7],
+        ["SSISPackageExecutionComponentPhases", true, false, 7],
+        ["SSISPackageExecutionDataStatistics", true, false, 7],
+        ["SSISIntegrationRuntimeLogs", true, false, 7],
+      ]
+      metric = [
+        #["Category name",  "Diagnostics Enabled(true/false)", "Retention Enabled(true/false)", Retention_period]
+        ["AllMetrics", true, false, 7],
+      ]
+    }
+  }
+
+  purview_account = {
+    name = "operational_logs_and_metrics"
+    categories = {
+      log = [
+        # ["Category name",  "Diagnostics Enabled(true/false)", "Retention Enabled(true/false)", Retention_period]
+        ["ScanStatusLogEvent", true, false, 7],
+        ["DataSensitivityLogEvent", true, false, 7],
+        ["Security", true, false, 7],
       ]
       metric = [
         #["Category name",  "Diagnostics Enabled(true/false)", "Retention Enabled(true/false)", Retention_period]
