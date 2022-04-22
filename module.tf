@@ -13,27 +13,28 @@ module "caf" {
   role_mapping            = var.role_mapping
   storage_accounts        = var.storage_accounts
 
-  /*
   diagnostics = {
     diagnostic_log_analytics    = var.diagnostic_log_analytics
     diagnostics_destinations    = var.diagnostics_destinations
     diagnostics_definition      = var.diagnostics_definition
     diagnostic_storage_accounts = var.diagnostic_storage_accounts
   }
-  */
+
   networking = {
     public_ip_addresses               = var.public_ip_addresses
     network_security_group_definition = var.network_security_group_definition
+    application_security_groups       = var.application_security_groups
+    load_balancers                    = var.load_balancers
     vnets                             = var.vnets
     private_dns                       = var.private_dns
   }
   compute = {
-    bastion_hosts = var.bastion_hosts
-    #azure_container_registries = var.azure_container_registries
+    bastion_hosts              = var.bastion_hosts
+    azure_container_registries = var.azure_container_registries
     virtual_machine_scale_sets = var.virtual_machine_scale_sets
   }
   shared_services = {
-    #shared_image_galleries = var.shared_image_galleries
+    shared_image_galleries = var.shared_image_galleries
   }
   data_factory = {
     data_factory                                 = var.data_factory
@@ -42,29 +43,10 @@ module "caf" {
   purview = {
     #purview_accounts = var.purview_accounts
   }
-
   storage = {
     storage_account_blobs = var.storage_account_blobs
     storage_containers    = var.storage_containers
   }
-}
-
-module "vmss_extension_custom_scriptextension" {
-  source     = "./modules/terraform-azurerm-caf/modules/compute/virtual_machine_scale_set_extensions"
-  depends_on = [module.caf]
-
-  for_each = {
-    for key, value in try(var.virtual_machine_scale_sets, {}) : key => value
-    if try(value.virtual_machine_scale_set_extensions.custom_script, null) != null
-  }
-
-  client_config                     = module.caf.client_config
-  virtual_machine_scale_set_id      = module.caf.virtual_machine_scale_sets[each.key].id
-  extension                         = each.value.virtual_machine_scale_set_extensions.custom_script
-  extension_name                    = "custom_script"
-  managed_identities                = tomap({ (var.landingzone.key) = module.caf.managed_identities })
-  storage_accounts                  = tomap({ (var.landingzone.key) = module.caf.storage_accounts })
-  virtual_machine_scale_set_os_type = module.caf.virtual_machine_scale_sets[each.key].os_type
 }
 
 module "dynamic_keyvault_secrets" {
@@ -88,9 +70,7 @@ resource "time_sleep" "delay" {
   create_duration = "15s"
 }
 
-/*
-
-module "vmss_extension_custom_script_adf_shir" {
+module "vmss_extension_custom_script_data_factory_self_hosted_runtime" {
   source     = "./modules/terraform-azurerm-caf/modules/compute/virtual_machine_scale_set_extensions"
   depends_on = [module.dynamic_keyvault_secrets]
 
@@ -107,10 +87,5 @@ module "vmss_extension_custom_script_adf_shir" {
   storage_accounts                  = tomap({ (var.landingzone.key) = module.caf.storage_accounts })
   virtual_machine_scale_set_os_type = module.caf.virtual_machine_scale_sets[each.key].os_type
   keyvaults                         = tomap({ (var.landingzone.key) = module.caf.keyvaults })
-  keyvault_id                       = local.vaults[var.landingzone.key]["kv1"].id
+  keyvault_id                       = module.caf.keyvaults["kv1"].id
 }
-
-locals {
-  vaults = tomap({ (var.landingzone.key) = module.caf.keyvaults })
-}
-*/

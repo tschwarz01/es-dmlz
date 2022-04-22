@@ -18,14 +18,3 @@ bastion_hosts = {
   }
 }
 
-public_ip_addresses = {
-  bastion_host = {
-    name                    = "bastion-pip1"
-    resource_group_key      = "shared-services"
-    sku                     = "Standard"
-    allocation_method       = "Static"
-    ip_version              = "IPv4"
-    idle_timeout_in_minutes = "4"
-  }
-}
-

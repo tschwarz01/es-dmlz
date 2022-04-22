@@ -16,7 +16,9 @@ variable "landingzone" {
     key                 = "examples"
   }
 }
-
+variable "current_landingzone_key" {
+  default = "examples"
+}
 variable "resource_groups" {
   default = {}
 }
@@ -87,5 +89,11 @@ variable "storage_account_blobs" {
   default = {}
 }
 variable "storage_containers" {
+  default = {}
+}
+variable "load_balancers" {
+  default = {}
+}
+variable "application_security_groups" {
   default = {}
 }

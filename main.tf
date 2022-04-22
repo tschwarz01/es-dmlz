@@ -1,5 +1,6 @@
 terraform {
   required_providers {
+
   }
   backend "azurerm" {
     subscription_id      = "47f7e6d7-0e52-4394-92cb-5f106bbc647f"
