@@ -20,7 +20,6 @@ provider "azurerm" {
       purge_soft_delete_on_destroy = true
     }
   }
-
 }
 
 provider "azurerm" {
@@ -34,3 +33,4 @@ provider "azurerm" {
   subscription_id = data.azurerm_client_config.default.subscription_id
   tenant_id       = data.azurerm_client_config.default.tenant_id
 }
+

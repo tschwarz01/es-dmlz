@@ -97,3 +97,9 @@ variable "load_balancers" {
 variable "application_security_groups" {
   default = {}
 }
+variable "keyvault_access_policies" {
+  default = {}
+}
+variable "vnet_peerings" {
+  default = {}
+}

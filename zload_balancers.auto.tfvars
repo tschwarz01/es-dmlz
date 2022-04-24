@@ -43,12 +43,5 @@ load_balancers = {
         frontend_ip_configuration_name = "config1" #name must match the configuration that's defined in the load_balancers block.
       }
     }
-    diagnostic_profiles = {
-      central_logs_region1 = {
-        definition_key   = "azure_data_factory"
-        destination_type = "log_analytics"
-        destination_key  = "central_logs"
-      }
-    }
   }
 }

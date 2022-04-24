@@ -5,13 +5,14 @@ module "caf" {
   providers = {
     azurerm.vhub = azurerm.vhub
   }
-  current_landingzone_key = var.landingzone.key
-  global_settings         = var.global_settings
-  resource_groups         = var.resource_groups
-  keyvaults               = var.keyvaults
-  managed_identities      = var.managed_identities
-  role_mapping            = var.role_mapping
-  storage_accounts        = var.storage_accounts
+  current_landingzone_key  = var.landingzone.key
+  global_settings          = var.global_settings
+  resource_groups          = var.resource_groups
+  keyvaults                = var.keyvaults
+  managed_identities       = var.managed_identities
+  role_mapping             = var.role_mapping
+  storage_accounts         = var.storage_accounts
+  keyvault_access_policies = var.keyvault_access_policies
 
   diagnostics = {
     diagnostic_log_analytics    = var.diagnostic_log_analytics
@@ -27,6 +28,7 @@ module "caf" {
     load_balancers                    = var.load_balancers
     vnets                             = var.vnets
     private_dns                       = var.private_dns
+    vnet_peerings                     = var.vnet_peerings
   }
   compute = {
     bastion_hosts              = var.bastion_hosts

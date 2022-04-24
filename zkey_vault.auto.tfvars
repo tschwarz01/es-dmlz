@@ -7,7 +7,13 @@ keyvaults = {
     soft_delete_enabled      = true
     purge_protection_enabled = true
     creation_policies = {
-      logged_in_user = {
+      object_id = {
+        object_id               = "6405df78-1204-44e2-b0d2-6666c8d83f71"
+        certificate_permissions = ["Get", "List", "Update", "Create", "Import", "Delete", "Purge", "Recover", "Getissuers", "Setissuers", "Listissuers", "Deleteissuers", "Manageissuers", "Restore", "Managecontacts"]
+        secret_permissions      = ["Set", "Get", "List", "Delete", "Purge", "Recover"]
+      }
+      object_id = {
+        object_id               = "dad82215-068b-4f31-8a4c-84a6333b6df8"
         certificate_permissions = ["Get", "List", "Update", "Create", "Import", "Delete", "Purge", "Recover", "Getissuers", "Setissuers", "Listissuers", "Deleteissuers", "Manageissuers", "Restore", "Managecontacts"]
         secret_permissions      = ["Set", "Get", "List", "Delete", "Purge", "Recover"]
       }
@@ -78,6 +84,16 @@ keyvaults = {
           keys            = ["privatelink.vaultcore.azure.net"]
         }
       }
+    }
+  }
+}
+
+keyvault_access_policies = {
+  kv1 = {
+    object_id = {
+      object_id               = "6405df78-1204-44e2-b0d2-6666c8d83f71"
+      certificate_permissions = ["Get", "List", "Update", "Create", "Import", "Delete", "Purge", "Recover", "Getissuers", "Setissuers", "Listissuers", "Deleteissuers", "Manageissuers", "Restore", "Managecontacts"]
+      secret_permissions      = ["Set", "Get", "List", "Delete", "Purge", "Recover"]
     }
   }
 }
