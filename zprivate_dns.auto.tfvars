@@ -32,7 +32,6 @@ private_dns = {
       }
     }
   }
-/*
   "privatelink.dfs.core.windows.net" = {
     name               = "privatelink.dfs.core.windows.net"
     resource_group_key = "networking"
@@ -99,6 +98,7 @@ private_dns = {
       }
     }
   }
+  /*
 
   "privatelink.afs.azure.net" = {
     name               = "privatelink.afs.azure.net"
@@ -178,6 +178,7 @@ private_dns = {
       }
     }
   }
+  */
   "privatelink.azuresynapse.net" = {
     name               = "privatelink.azuresynapse.net"
     resource_group_key = "networking"
@@ -200,7 +201,7 @@ private_dns = {
       }
     }
   }
-
+  /*
   "privatelink.cassandra.cosmos.azure.com" = {
     name               = "privatelink.cassandra.cosmos.azure.com"
     resource_group_key = "networking"
@@ -223,6 +224,7 @@ private_dns = {
       }
     }
   }
+  */
   "privatelink.database.windows.net" = {
     name               = "privatelink.database.windows.net"
     resource_group_key = "networking"
@@ -246,7 +248,7 @@ private_dns = {
       }
     }
   }
-
+  /*
   "privatelink.digitaltwins.azure.net" = {
     name               = "privatelink.digitaltwins.azure.net"
     resource_group_key = "networking"
@@ -258,6 +260,7 @@ private_dns = {
       }
     }
   }
+  */
   "privatelink.documents.azure.com" = {
     name               = "privatelink.documents.azure.com"
     resource_group_key = "networking"
@@ -269,6 +272,7 @@ private_dns = {
       }
     }
   }
+  /*
   "privatelink.eventgrid.azure.net" = {
     name               = "privatelink.eventgrid.azure.net"
     resource_group_key = "networking"
@@ -280,6 +284,7 @@ private_dns = {
       }
     }
   }
+  */
   "privatelink.file.core.windows.net" = {
     name               = "privatelink.file.core.windows.net"
     resource_group_key = "networking"
@@ -291,6 +296,7 @@ private_dns = {
       }
     }
   }
+  /*
   "privatelink.gremlin.cosmos.azure.com" = {
     name               = "privatelink.gremlin.cosmos.azure.com"
     resource_group_key = "networking"
@@ -368,6 +374,7 @@ private_dns = {
       }
     }
   }
+  */
   "privatelink.monitor.azure.com" = {
     name               = "privatelink.monitor.azure.com"
     resource_group_key = "networking"
@@ -401,6 +408,7 @@ private_dns = {
       }
     }
   }
+  /*
   "privatelink.ods.opinsights.azure.com" = {
     name               = "privatelink.ods.opinsights.azure.com"
     resource_group_key = "networking"
@@ -423,6 +431,7 @@ private_dns = {
       }
     }
   }
+  */
   "privatelink.postgres.database.azure.com" = {
     name               = "privatelink.postgres.database.azure.com"
     resource_group_key = "networking"
@@ -434,7 +443,7 @@ private_dns = {
       }
     }
   }
-
+  /*
   "privatelink.redis.cache.windows.net" = {
     name               = "privatelink.redis.cache.windows.net"
     resource_group_key = "networking"
@@ -491,6 +500,7 @@ private_dns = {
       }
     }
   }
+  */
   "privatelink.sql.azuresynapse.net" = {
     name               = "privatelink.sql.azuresynapse.net"
     resource_group_key = "networking"
@@ -612,5 +622,4 @@ private_dns = {
       }
     }
   }
-*/
 }
